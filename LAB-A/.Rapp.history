@@ -1,0 +1,295 @@
+data <- read.table("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/ExpI1_01.txt", header = TRUE, sep = ",")
+attach(data)
+ds <- read.table("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/ExpI1_01.txt", header = TRUE, sep = ",")
+attach(ds)
+ggplot(data=ds,aes(x=thickness,y=count,colour=Code,linetype=Group,ymin=Mean-SE,ymax=Mean+SE)) #
+	+ geom_line() #
+	+ scale_x_continuous(breaks=c(1,2))#
+	+ scale_linetype_manual(values=c(2,1))#
+	+ geom_point()#
+	+ geom_errorbar(width=.1,position='dodge')
+library(ggplot2)
+ggplot(data=ds,aes(x=thickness,y=count,colour=Code,linetype=Group,ymin=Mean-SE,ymax=Mean+SE)) #
+	+ geom_line() #
+	+ scale_x_continuous(breaks=c(1,2))#
+	+ scale_linetype_manual(values=c(2,1))#
+	+ geom_point()#
+	+ geom_errorbar(width=.1,position='dodge')
+ggplot(data=ds,aes(x=thickness,y=count,ymin=Mean-SE,ymax=Mean+SE)) #
+	+ geom_line() #
+	+ scale_x_continuous(breaks=c(1,2))#
+	+ scale_linetype_manual(values=c(2,1))#
+	+ geom_point()#
+	+ geom_errorbar(width=.1,position='dodge')
+gplot(data=ds,aes(x=thickness,y=count,ymin=Mean-SE,ymax=Mean+SE)) #
+	+ geom_line() #
+	+ scale_x_continuous(breaks=c(1,2))#
+	+ scale_linetype_manual(values=c(2,1))#
+	+ geom_point()#
+	+ geom_errorbar(width=.1,position='dodge')
+ggplot(data=ds,aes(x=thickness,y=count,ymin=Mean-SE,ymax=Mean+SE)) #
+	+ geom_line() #
+	+ scale_x_continuous(breaks=c(1,2))#
+	+ scale_linetype_manual(values=c(2,1))#
+	+ geom_point()#
+	+ geom_errorbar(width=.1,position='dodge')
+library(ggplot2)
+ggplot
+set.seed(42)#
+small<-diamonds[sample(nrow(diamonds),1000),]
+head(small)
+attach(small)
+ggplot(small)#
+	+geom_point(aes(x=carat,y=price,colour=cut))#
+		+scale_y_log10()#
+			+facet_wrap(~cut)#
+				+ggtitle("First example")
+ggplot(small)#
+	+ geom_point(aes(x=carat,y=price,colour=cut))#
+		+ scale_y_log10()#
+			+ facet_wrap(~cut)#
+				+ ggtitle("First example")
+ggplot(small) + geom_point(aes(x=carat,y=price,colour=cut)) + scale_y_log10() + facet_wrap(~cut) + ggtitle("First example")
+d <- ggplot(small) + geom_point(aes(x=carat,y=price,colour=cut)) + scale_y_log10() + facet_wrap(~cut) + ggtitle("First example")
+d
+print()
+print(d)
+d <- ggplot(small,aes(x=carat,y=price,colour=cut))
+d
+d <- ggplot(data=small,aes(x=carat,y=price,colour=cut))
+d
+d <- ggplot(small) + geom_point(aes(x=carat,y=price,colour=cut)) + scale_y_log10() + facet_wrap(~cut) + ggtitle("First example")
+d
+head(data)
+data <- read.table("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/ExpI1_01.txt", header = TRUE, sep = ",")
+attach(data)
+d <- ggplot(data) + geom_point(aes(x=thickness,y=count)) + scale_y_log10() + ggtitle("First example")
+d
+std <- function(x) sd(x)/sqrt(length(x))
+fit1  <- lm(count~thickness)#
+fit2 <- lm(count~poly(thickness,2,raw=TRUE))#
+fit3 <- lm(count~poly(thickness,3,raw=TRUE))#
+fit4 <- lm(count~poly(thickness,4,raw=TRUE))
+xx <- seq(0,0.1, length=100)
+xx
+lines(xx, predict(fit, data.frame(x=xx)), col="red")#
+lines(xx, predict(fit2, data.frame(x=xx)), col="green")#
+lines(xx, predict(fit3, data.frame(x=xx)), col="blue")#
+lines(xx, predict(fit4, data.frame(x=xx)), col="purple")
+lines(xx, predict(fit1, data.frame(x=xx)), col="red")#
+lines(xx, predict(fit2, data.frame(x=xx)), col="green")#
+lines(xx, predict(fit3, data.frame(x=xx)), col="blue")#
+lines(xx, predict(fit4, data.frame(x=xx)), col="purple")
+d <- d + lines(xx, predict(fit1, data.frame(x=xx)), col="red") + lines(xx, predict(fit2, data.frame(x=xx)), col="green") + lines(xx, predict(fit3, data.frame(x=xx)), col="blue") + lines(xx, predict(fit4, data.frame(x=xx)), col="purple")
+d
+d <- d + geom_abline(stat = "abline", position = "identity")
+d
+d <- d + geom_abline(stat = "abline", position = "identity",show_guide = TRUE)
+d
+summary(fit1)
+summary(fit2)
+summary(fit3)
+summary(fit4)
+library(methods)
+d <- ggplot(data) + geom_point(aes(x=thickness,y=count)) + scale_y_log10() + ggtitle("First example")
+d
+d <- d + stat_smooth(method = "lm", formula = y ~ x, size = 1, se = FALSE,#
+    colour = "black")
+d
+d <- ggplot(data) + geom_point(aes(x=thickness,y=count)) + scale_y_log10() + ggtitle("First example")
+d <- d + stat_smooth(method = "lm", formula = count ~ thickness, size = 1, se = FALSE,#
+    colour = "black")
+d
+d <- d + stat_smooth()
+d <- ggplot(data) + geom_point(aes(x=thickness,y=count)) + scale_y_log10() + ggtitle("First example")
+d <- d + stat_smooth()
+d
+d <- ggplot(data) + geom_point(aes(x=thickness,y=count)) + scale_y_log10() + ggtitle("First example")
+d <- d + stat_smooth(aes(x=thickness, y=count)
+d
+d <- ggplot(data) + geom_point(aes(x=thickness,y=count)) + scale_y_log10() + ggtitle("First example")
+d <- d + stat_smooth(aes(x=thickness, y=count))
+d
+d <- ggplot(data) + geom_point(aes(x=thickness,y=count)) + scale_y_log10() + ggtitle("First example")
+d <- d + stat_smooth(aes(x=thickness, y=count), se = TRUE)
+d
+d <- ggplot(data) + geom_point(aes(x=thickness,y=count)) + ggtitle("First example")
+d <- d + stat_smooth(aes(x=thickness, y=count), se = TRUE)
+d
+d <- ggplot(data) + geom_point(aes(x=thickness,y=count)) + scale_y_log10() + scale_x_log10() + ggtitle("First example")
+d <- d + stat_smooth(aes(x=thickness, y=count), se = TRUE)
+d
+d <- ggplot(data) + geom_point(aes(x=thickness,y=count)) + scale_y_log10() + ggtitle("First example")
+d <- d + stat_smooth(aes(x=thickness, y=count), se = TRUE)
+d
+d <- ggplot(data) + geom_point(aes(x=thickness,y=count)) + scale_y_log10() + ggtitle("First example")
+s <= stat_smooth(aes(x=thickness, y=count), se = TRUE)
+s <- stat_smooth(aes(x=thickness, y=count), se = TRUE)
+s
+d <- d + s
+s
+d
+s
+s.ymin
+s
+fit  <- lm(ln(count)~a*thickness+b)
+fit  <- lm(log10(count)~a*thickness+b)
+fit  <- lm(log10(count)~A*thickness+B)
+fit  <- lm(log10(count)~thickness)
+summary(fit)
+coeffs(fit)
+fit.coefficients
+coef(fit)
+d <- ggplot(data) + geom_point(aes(x=thickness,y=count)) + scale_y_log() + ggtitle("First example")
+d <- ggplot(data) + geom_point(aes(x=thickness,y=count)) + scale_y_log10() + ggtitle("First example")
+s <- stat_smooth(aes(x=thickness, y=count), se = TRUE)
+d <- d + s
+d
+fit  <- lm(log(count)~thickness)
+summary(fit)
+coef(fit)
+fit2  <- lm(log10(count)~thickness)
+summary(fit2)
+coef(fit2)
+fit
+d <- ggplot(data) + geom_point(aes(x=thickness,y=count)) + scale_y_log10() + ggtitle("First example") + xlab("Thickness (mm)") + ylab("Counts per Second")
+d <- d + s
+d
+d <- ggplot(data) + geom_point(aes(x=thickness,y=count)) + scale_y_log10() + ggtitle("First example") + xlab("Thickness (mm)") + ylab("Count Rate (counts per second)")
+d <- d + s
+d
+summary(fit)
+fit
+data
+fit
+summary(fit)
+d
+fit
+fit.se
+error(fit)
+fit$sigma
+summary(fit)
+fit[16]
+m <- summary(fit)
+str(m)
+m$sigma
+m$sigma[1]
+m$r.squared
+limits <- aes(ymax = count + se, ymin=resp - se)
+se = m$sigma
+limits <- aes(ymax = count + se, ymin=count - se)
+dodge <- position_dodge(width=0.9)
+d <- d + geom_errorbar(limits, position=dodge, width=0.25)
+d
+d <- ggplot(data) + geom_point(aes(x=thickness,y=count)) + scale_y_log10() + ggtitle("First example") + xlab("Thickness (mm)") + ylab("Count Rate (counts per second)")
+s <- stat_smooth(aes(x=thickness, y=count), se = TRUE)
+d <- d + s
+d
+bars <- geom_errorbar(limits, position=dodge, width=0.25)
+bars <- geom_errorbar(limits, width=0.25)
+d <- d + bars
+d
+d <- ggplot(data) + geom_point(aes(x=thickness,y=count)) + scale_y_log10() + ggtitle("First example") + xlab("Thickness (mm)") + ylab("Count Rate (counts per second)")
+d <- d + s
+d
+limits <- aes(x = thickness, ymax = count + se, ymin=count - se)
+bars <- geom_errorbar(limits, width=0.25)
+d <- d + bars
+d
+d <- ggplot(data) + geom_point(aes(x=thickness,y=count)) + scale_y_log10() + ggtitle("First example") + xlab("Thickness (mm)") + ylab("Count Rate (counts per second)")
+d <- d + s
+bars <- geom_errorbar(limits, width=0.005)
+d <- d + bars
+d
+d <- ggplot(data) + geom_point(aes(x=thickness,y=count)) + scale_y_log10() + ggtitle("First example") + xlab("Thickness (mm)") + ylab("Count Rate (counts per second)")
+d <- d + s
+bars <- geom_errorbar(limits, width=0.0025)
+d <- d + bars
+d
+d <- ggplot(data) + geom_point(aes(x=thickness,y=count)) + ggtitle("First example") + xlab("Thickness (mm)") + ylab("Count Rate (counts per second)")
+d <- d + s
+d <- d + bars
+d
+d <- ggplot(data) + geom_point(aes(x=thickness,y=count)) + ggtitle("Attenuation of Radation by Iron") + xlab("Thickness (mm)") + ylab("Count Rate (counts per second)")
+d <- d + s
+d <- d + bars
+d
+m
+sw
+se
+m$df
+m$residuals
+d <- ggplot(data) + geom_point(aes(x=thickness,y=count)) + ggtitle("Attenuation of Radation by Iron") + xlab("Thickness (mm)") + ylab("Count Rate (counts per second)")
+limits <- aes(x = thickness, ymax = count + .01, ymin=count - .01)
+d <- d + s
+bars <- geom_errorbar(limits, width=0.001)
+d <- d + bars
+d
+d <- ggplot(data) + geom_point(aes(x=thickness,y=count)) + ggtitle("Attenuation of Radation by Iron") + xlab("Thickness (mm)") + ylab("Count Rate (counts per second)")
+se <- se + .01
+limits <- aes(x = thickness, ymax = count + se, ymin=count - se)
+d <- d + s
+bars <- geom_errorbar(limits, width=0.001)
+d <- d + bars
+d
+d <- ggplot(data) + geom_point(aes(x=thickness,y=count)) + scale_y_log+ ggtitle("Attenuation of Radation by Iron") + xlab("Thickness (mm)") + ylab("Count Rate (counts per second)")
+d <- ggplot(data) + geom_point(aes(x=thickness,y=count)) + scale_y_log10+ ggtitle("Attenuation of Radation by Iron") + xlab("Thickness (mm)") + ylab("Count Rate (counts per second)")
+d <- ggplot(data) + geom_point(aes(x=thickness,y=count)) + scale_y_log() + ggtitle("Attenuation of Radation by Iron") + xlab("Thickness (mm)") + ylab("Count Rate (counts per second)")
+d <- ggplot(data) + geom_point(aes(x=thickness,y=count)) + scale_y_log10() + ggtitle("Attenuation of Radation by Iron") + xlab("Thickness (mm)") + ylab("Count Rate (counts per second)")
+d <- d + s
+d <- d + bars
+d
+d <- d + annotation_logticks()
+d
+source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Radiation Attenuation Dataset.R")
+d
+source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Radiation Attenuation Dataset.R")
+source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Electrical Cunductivity of Semiconductor.R")
+data
+source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Electrical Cunductivity of Semiconductor.R")
+source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Electrical Cunductivity of Semiconductor.R")
+source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Electrical Cunductivity of Semiconductor.R")
+source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Radiation Attenuation Dataset.R")
+source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Radiation Attenuation Dataset.R")
+source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Radiation Attenuation Dataset.R")
+source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Radiation Attenuation Dataset.R")
+source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Radiation Attenuation Dataset.R")
+source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Radiation Attenuation Dataset.R")
+source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Radiation Attenuation Dataset.R")
+source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Radiation Attenuation Dataset.R")
+source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Radiation Attenuation Dataset.R")
+source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Radiation Attenuation Dataset.R")
+source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Radiation Attenuation Dataset.R")
+source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Radiation Attenuation Dataset.R")
+source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Magnetization of a Ferromagnet.R")
+source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Magnetization of a Ferromagnet.R")
+source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Magnetization of a Ferromagnet.R")
+source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Suceptibility of a Ferromagnet.R")
+source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Suceptibility of a Ferromagnet.R")
+source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Electrical Cunductivity of Semiconductor.R")
+source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Magnetization of a Ferromagnet.R")
+source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Suceptibility of a Ferromagnet.R")
+fit
+fit$model
+source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Suceptibility of a Ferromagnet.R")
+source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Suceptibility of a Ferromagnet.R")
+summary(fit)
+fit
+source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Specific Heat of a Solid.R")
+source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Specific Heat of a Solid.R")
+source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Specific Heat of a Solid.R")
+data
+source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Specific Heat of a Solid.R")
+source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Specific Heat of a Solid.R")
+source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Specific Heat of a Metal.R")
+source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Specific Heat of a Metal.R")
+source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Specific Heat of a Metal.R")
+source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Specific Heat of a Metal.R")
+source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Specific Heat of a Metal.R")
+source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Specific Heat of a Metal.R")
+source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Specific Heat of a Solid.R")
+source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Specific Heat of a Solid.R")
+source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Specific Heat of a Solid.R")
+source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Specific Heat of a Solid.R")
+source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Specific Heat of a Solid.R")
+source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Specific Heat of a Solid.R")

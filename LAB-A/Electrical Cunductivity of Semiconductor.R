@@ -1,0 +1,22 @@
+setwd("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/")
+source("functions.R")
+library(ggplot2)
+data <- read.table("Electrical Cunductivity of Semiconductor.txt", header = TRUE, sep = ",")
+data$z <- apply(data,1,function(row) 1/row[1])
+data$se <- apply(data,1,function(row) row[2]*.04)
+data$ymin <- apply(data,1,function(row) log(row[2] - row[3]))
+data$ymax <- apply(data,1,function(row) log(row[2] + row[3]))
+data$ylog <- apply(data,1,function(row) log(row[2]))
+attach(data)
+fit  <- lm(ylog~z)
+m <- summary(fit)
+e <- m$sigma
+limits <- aes(x = z, ymax = ymax, ymin=ymin)
+bars <- geom_errorbar(limits, width=.00001)
+s <- stat_smooth(aes(x=x, y=y), se = TRUE)
+d <- ggplot(data) + geom_point(aes(x=x,y=y)) + ggtitle("Electrical Conductivity of a Semiconductor") + xlab("Temperature (K)") + ylab("ln(Conductivity (ohms/cm))")
+d <- d + s #+ bars
+print(d)
+#eq <- function(x, ,) {e^(-)}
+#a <- ggplotRegression(fit, "Electrical Conductivity of a Semiconductor", "Temperature (K)", "ln(Conductivity (ohms/cm))", bars)
+#print(a)
