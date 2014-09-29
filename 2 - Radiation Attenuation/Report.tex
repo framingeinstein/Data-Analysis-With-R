@@ -1,0 +1,158 @@
+%% ****** Start of file aiptemplate.tex ****** %
+%%
+%%   This file is part of the files in the distribution of AIP substyles for REVTeX4.
+%%   Version 4.1 of 9 October 2009.
+%%
+%
+% This is a template for producing documents for use with 
+% the REVTEX 4.1 document class and the AIP substyles.
+% 
+% Copy this file to another name and then work on that file.
+% That way, you always have this original template file to use.
+
+%\documentclass[aip,jap,numerical,preprint]{revtex4-1}
+\documentclass[twocolumn,secnumarabic,amssymb, nobibnotes, aps, pra]{revtex4}
+\newcommand{\revtex}{REV\TeX\ }
+\newcommand{\classoption}[1]{\texttt{#1}}
+\newcommand{\macro}[1]{\texttt{\textbackslash#1}}
+\newcommand{\m}[1]{\macro{#1}}
+\newcommand{\env}[1]{\texttt{#1}}
+\setlength{\textheight}{9.5in}
+
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{color}
+\usepackage{enumerate}
+
+%\draft % marks overfull lines with a black rule on the right
+
+\begin{document}
+
+%Title of paper
+\title{Absorption of Beta and Gamma Rays
+% \large{Methods of experimental physics} \\ 
+ %\normalsize{PHYS 413}
+ }
+
+% repeat the \author .. \affiliation  etc. as needed
+% \email, \thanks, \homepage, \altaffiliation all apply to the current
+% author. Explanatory text should go in the []'s, actual e-mail
+% address or url should go in the {}'s for \email and \homepage.
+% Please use the appropriate macro foreach each type of information
+
+% \affiliation command applies to all authors since the last
+% \affiliation command. The \affiliation command should follow the
+% other information
+% \affiliation can be followed by \email, \homepage, \thanks as well.
+\author{Jason Morgan}
+\affiliation{Department of Physics, Old Dominion University, Norfolk VA 23529}
+
+\author{Victoria Lagerquist}
+\affiliation{Department of Physics, Old Dominion University, Norfolk VA 23529}
+
+\author{Heather Hagood}
+\affiliation{Department of Physics, Old Dominion University, Norfolk VA 23529}
+
+
+
+
+\date{\today}
+
+
+\begin{abstract}
+This experiment will study the absorbtion of beta and gamma radiation by aluminum and lead respectivly.  The objective will be to measure the value of the absorption coefficient ($\mu$) for each material.
+\end{abstract}
+
+\maketitle
+\section{Introduction}
+
+This is the background section of the experiment.  This should include a brief history of what has been done before or the historical context of the experiment. You are allowed and encouraged to site sources here.  A quick Google Scholar search should lead you to possible sources. Then you should give a brief summary of the physical effect of interest and provide necessary equations. Here is how you insert an equation. 
+\begin{equation}
+I = I_0 e^( -\mu x )
+\label{Equationname}   %label the equation
+\end{equation}
+where x and y are variables, $\pi$ and $\alpha$ are constants, etc. 
+
+{\bf Don't forget to explain what each variable in the equation means, when you introduce it for the first time!}  %this puts your text in bold
+
+\section{Experimental setup and procedures}
+
+This section includes the process of the experiment exactly as it was done in the laboratory. Give a schematic (photo) of the experimental setup(s) used in the experiment, see Fig. . Here is how you insert figure:
+
+Hint: take screen shots of images if you need to, just give credit to the source if you do not draw it.  It is always better to draw your own or take your own pictures whenever possible.
+
+Give the description of abbreviations used either in the figure caption or in the text. Write a description of what is going on. A good rule of thumb for writing complete but concise experimental procedures is to include enough information so that others who read the report would be able to duplicate the experiment at a later date. 
+
+{\bf Note:} LaTeX will put figures and tables at the locations where it thinks it is the best. Do not fight it, unless you really need it.
+
+
+\section{Results and Discussion}
+
+In this section you will need to show your experimental results. Use tables and graphs whenever it is possible. You should present your raw experimental data organized into graphs and tables. This is how you can insert table (see Table \ref{tab:sampletable}):
+\begin{table} [htb]  % Capital letters stronger suggestion
+\caption{Table title}      %title of the table     
+\centering              % centering table
+\begin{tabular}{crrr} % creating four columns (c stands for ceneter, r for right, l for left)
+\hline\hline %inserting double-line
+  No & Time (s)  & Height (m) & Error (m)   \\
+\hline % inserts single-line
+1 & 1 & 4.7 & 0.3  \\
+2 & 2 & 19 & 1\\ % Entering row contents
+3 & 3 & 43 & 2\\
+4 & 4 & 84 & 4\\
+5 & 5 & 131 & 7\\
+\hline % inserts single-line
+\end{tabular}
+\label{tab:sampletable}
+\end{table}
+
+Figures (see Fig. \ref{fig:samplesetup}) and tables (see Table \ref{tab:sampletable}) should have a caption. If you have a bunch of numbers that you measured 1 time and used throughout the experiment lump them together into a table.  For example, in the magnetic torque lab you measure various aspects of the sphere.  You can put all those measurements into a table and then refer to the table in your analysis. All  measured and calculated values must include an uncertainty value calculated using error estimation methods \cite{taylor1997}. All data that is plotted should contain error bars. You do NOT need to include your error propagation calculations unless you use a non-standard equation, but a brief description of how you determined experimental uncertainties for measured values is encouraged.
+
+Compare your work to expectations if possible with a percent difference.  Discuss the success or failure of your results and explain any oddities if you can (this can be done by rechecking good lab notes).  If you explored anything on your own list results and discuss here.  
+
+Table \ref{tab:table2} shows quick summary.
+
+\begin{table}
+\caption{\label{tab:table1} Quick Summary of Data and Data Analysis.  }
+\begin{ruledtabular}
+\begin{tabular}{l}		
+		\hline
+		Report all numbers collected with error and \textbf{units}.\\ \hline
+		All figures and tables should be labeled and captioned.\\ \hline
+		All equations should have variables explained.\\ \hline
+		All plotted data should have error bars.\\ \hline
+		Report original data then manipulate/calculate.\\ \hline
+		Propagate errors.\\ \hline
+		Discuss any calculations\\ \hline
+		Compare your result when possible\\ \hline
+		Discuss success or failure \\
+
+\end{tabular}
+\end{ruledtabular}
+\label{tab:table2}
+\end{table}
+
+
+\section{Conclusion}
+
+Using one or two paragraphs, briefly summarize the experiment and describe the key discoveries.  In this section, reasonable suggestions on how to improve the experiment would be helpful.
+
+%Write down references
+%-----------------------------------
+\begin{thebibliography}{5}
+\bibitem{taylor1997} J. R. Taylor, \textit{An Introduction to Error Analysis}, (University Science Books, Sausalito CA, 1997).
+\end{thebibliography}
+
+
+%If you need to add appendix
+%------------------------------------------
+\appendix
+\section{Supplementary Material}
+
+An appendix should be included for material that is not crucial for the general reader, but that would be of special interest to a reader with strong knowledge of the experiment.  For example, specialized computer code (C, Python, FORTRAN, etc.) that you developed for analysis could be included in an appendix.
+
+
+\end{document}
+%
+% ****** End of file aiptemplate.tex ******

@@ -1,0 +1,161 @@
+%% ****** Start of file aiptemplate.tex ****** %
+%%
+%%   This file is part of the files in the distribution of AIP substyles for REVTeX4.
+%%   Version 4.1 of 9 October 2009.
+%%
+%
+% This is a template for producing documents for use with 
+% the REVTEX 4.1 document class and the AIP substyles.
+% 
+% Copy this file to another name and then work on that file.
+% That way, you always have this original template file to use.
+
+%\documentclass[aip,jap,numerical,preprint]{revtex4-1}
+\documentclass[twocolumn,secnumarabic,amssymb, nobibnotes, aps, pra]{revtex4}
+\newcommand{\revtex}{REV\TeX\ }
+\newcommand{\classoption}[1]{\texttt{#1}}
+\newcommand{\macro}[1]{\texttt{\textbackslash#1}}
+\newcommand{\m}[1]{\macro{#1}}
+\newcommand{\env}[1]{\texttt{#1}}
+\setlength{\textheight}{9.5in}
+
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{color}
+\usepackage{enumerate}
+\providecommand{\e}[1]{\ensuremath{\times 10^{#1}}}
+
+%\draft % marks overfull lines with a black rule on the right
+
+\begin{document}
+
+%Title of paper
+\title{Milikan Oil Drop Experiment
+% \large{Methods of experimental physics} \\ 
+ %\normalsize{PHYS 413}
+ }
+
+% repeat the \author .. \affiliation  etc. as needed
+% \email, \thanks, \homepage, \altaffiliation all apply to the current
+% author. Explanatory text should go in the []'s, actual e-mail
+% address or url should go in the {}'s for \email and \homepage.
+% Please use the appropriate macro foreach each type of information
+
+% \affiliation command applies to all authors since the last
+% \affiliation command. The \affiliation command should follow the
+% other information
+% \affiliation can be followed by \email, \homepage, \thanks as well.
+\author{Jason Morgan}
+%\email[]{Your e-mail address}
+%\homepage[]{Your web page}
+%\thanks{}
+%\altaffiliation{}
+\affiliation{Department of Physics, Old Dominion University, Norfolk VA 23529}
+
+\date{April 29, 2014}
+
+\begin{abstract}
+This experiment determines the charge of an electron by comparing the gravational force on the oil drop to the electromagnetic force on the oil drop. This is accomplished by place an electric charge on the drops while suspended in air and switching an electric field on and off.
+\end{abstract}
+
+\maketitle
+\section{Introduction}
+
+The charge of the electron was found in this experiment be measuring the total charge emparted to an oil drop and calculating a common factory.  This was accomplished using the Milikan oil drop apparatus.  This works by atomizing mineral oil and suspending is in a chamber where it is exposed to alpha particles which impart and electric charge to the drops.  The device also has a capacitor that produces an electric field.  This field is used to cause the drops to rise in the gravational field.  The rise and fall times of the drops can then be measured and the from that the forces acting on the drop can be deduced.  This allows for the calculation of the charge of the electron.
+
+
+\section{Experimental setup and procedures}
+
+\begin{figure} [h] 
+\begin{center}
+\includegraphics[width=85mm]{setuplabel.eps} 
+\end{center}
+\caption{Oil Drop Apparatus Components}
+\label{fig:label}
+\end{figure}
+
+Procedures
+
+\begin{equation}
+q= \frac{4}{3} \pi\rho g\left [ \sqrt{\left ( \frac{b}{2p} \right )^{2}+\frac{9\, \eta \, v_{f}}{2g\rho }} \; -\; \frac{b}{2p}\right ]^{3}\; \frac{v_{f}\: +\: v_{r}}{E\: v_{f}},
+%\label{eq:one}  
+\end{equation}
+
+where:
+
+\begin{table} [htb]
+\begin{tabular}{cl}
+$q$ & - total charge ($coulombs$)\\
+$d$ & - separation on plates ($m$)\\
+$\rho$ & - density of oil ($kg/m^{3}$)\\
+$g$ & - acceleration of gravity ($m/s^{2}$)\\
+$\eta$ & - viscosity of air ($Ns/m^{2}$)\\
+$b$ & - barometric pressure ($Pa-m$)\\
+$v_{f}$ & - velocity of falling drop ($m/s$)\\
+$v_{r}$ & - velocity of rising drop ($m/s$)\\
+$E$ & - voltage/d ,\\
+\end{tabular}
+\end{table}
+
+
+To time the rise and fall times of the drops, a custom timer application was used.  This application was developed by a previous team to allow the times to be recorded more efficently than using a stopwatch.  To begin the experiment the equipment was cleaned, the plate seperation was measured and the foucus of the eye piece was calibrated.  Then, with the ionization source turned off, a small mist of oil was introduced to the chamber.  Then the ionazation source was turned on for a few seconds to impart an electric charge to the oil drops.  The drops were watched while turning the electric fiele on and off until a drop was found that both had a charge and was easily tracked.  
+
+Once this drop was itentified the electric field was turned off and the timer was started when the drop crossed one of the major reticle lines.  When the droped passed the next major reticle line, the times was restarted and the electric field was turned on.  The application used recorded the times when the restarts occured.  
+
+This procedure was repeated while exposing the oil drops for varing periods of time to the ionizarion source.  
+
+\section{Results and Discussion}
+
+It was found to be quite difficult to find an oil drop that could be tracked for an extended period of time.  Many attempts were made to get a good run of data and eventually there were three data sets that were acceptable.  The averages for these trials is in Table \ref{tab:data}.  The data is inserted into equation (\ref{eq:one}) to produce the value for the charge which is listed in Table \ref{tab:two}. 
+
+\begin{table} [htb]  % Capital letters stronger suggestion
+\caption{}      %title of the table     
+%\centering              % centering table
+\begin{tabular}{ccc} % creating four columns (c stands for ceneter, r for right, l for left)
+\hline\hline %inserting double-line
+Trial  & Average $v_r (m/s)$ & Average $v_f (m/s)$\\
+\hline % inserts single-line
+1 & $2.51\e{-5}$ & $3.51\e{-5}$\\
+2 & $9.49\e{-5}$ & $2.91\e{-5}$\\
+3 & $1.19\e{-4}$ & $6.45\e{-5}$\\
+%\hline % inserts single-line
+\end{tabular}
+\label{tab:data}
+\end{table}
+
+This charge is divided by the smallest charge found and this charge is assumed to be the charge of one electron.  The data in 
+
+\begin{table} [htb]  % Capital letters stronger suggestion
+\caption{}      %title of the table     
+%\centering              % centering table
+\begin{tabular}{ccc} % creating four columns (c stands for ceneter, r for right, l for left)
+\hline\hline %inserting double-line
+Total Charge (coulombs)  & No. e Calc & No. e Actual \\
+\hline % inserts single-line
+$1.31\e{-19}(\pm$ 4\e{-21}) & 1 (1.00) & 1 (0.82)\\
+$3.02\e{-19}(\pm$ 2\e{-21}) & 2 (2.30) & 2 (1.88)\\
+$6.72\e{-19}(\pm$ 1\e{-21}) & 5 (5.12) & 4 (4.19)\\
+%\hline % inserts single-line
+\end{tabular}
+\label{tab:two}
+\end{table}
+
+The data shows fractional numbers of electrons which is not possible and this number is rounded to the nearest integer.  The data in the last column is the number of electrons calculated by using the actual value for the charge of the electron.  This is primarily due to the error in measuring the rise and fall times as well as not using the actuall barimetric pressue due to the lack of a barameter.  The error could be decreased by being able to make more rise and fall measurements for each drop.  
+
+Using the smallest value obtained for the charge as the charge of one electron gives $1.31\e{-19} \pm 4\e{-21}$ coulombs.  This varies from the accepted value of $1.60\e{-19}$ coulombs by 18\%.
+
+\section{Conclusion}
+
+This experiment was difficult to perform because of the difficulty in performing trials that lasted long enough to perform more that 10 rise and fall pairs.  There was also significant turn around time between trials as a it took some time to get a decent mist of oil drops and find one to track.  
+
+%Write down references
+%-----------------------------------
+\begin{thebibliography}{5}
+\bibitem{3} Sunny Bishop, \textit{MILLIKAN OIL DROP APPARATUS}, (10101 Foothills Blvd. Roseville, CA).
+\end{thebibliography}
+
+\end{document}
+
+%
+% ****** End of file aiptemplate.tex ******

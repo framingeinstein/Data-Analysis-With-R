@@ -1,4 +1,4 @@
-setwd("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/")
+setwd("/Users/jason/Documents/projects/ODU/PHYS413/1 - Data Analysis Examples/")
 source("functions.R")
 library(ggplot2)
 data <- read.table("Electrical Cunductivity of Semiconductor.txt", header = TRUE, sep = ",")

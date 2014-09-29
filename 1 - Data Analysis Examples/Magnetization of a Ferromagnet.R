@@ -1,6 +1,6 @@
 library(ggplot2)
 library(stats)
-setwd("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/")
+setwd("/Users/jason/Documents/projects/ODU/PHYS413/1 - Data Analysis Examples/")
 source("functions.R")
 data <- read.table("Magnetization of a Ferromagnet.txt", header = TRUE, sep = ",")
 data$z <- apply(data,1,function(row) (row[1])^2)

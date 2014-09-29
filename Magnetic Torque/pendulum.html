@@ -1,0 +1,157 @@
+<html><head>
+<title>Interactive Simple Pendulum on  html5 canvas | Vivax Solutions</title>
+<style type="text/css">
+html, body{
+margin:0px;padding:0px;
+}
+#header{
+    background: #0A2B3E;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 12px;
+	color: #7C95A5;
+	height:80px;
+	padding-top:20px;
+	width:100%;
+}
+
+#sub_header{
+    background: #FF0000;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 12px;
+	color: #FFFFFF;
+	height:50px;
+	width:800px;
+	margin-left:auto;
+	margin-right:auto;
+	border-radius:5px;
+    padding-top:5px;
+}
+
+#page{
+// normal size=650px;
+width:650px;
+margin-left:auto;margin-right:auto;padding-top:10px;padding-bottom:10px;
+}
+
+#content_left{
+width:400px;
+height:350px;
+float:left;
+margin-bottom:10px;
+}
+
+#content_right{
+width:180px;
+height:280px;
+//border:solid lightblue 5px;border-radius:5px;
+float:left;
+padding-left:10px;
+margin-left:30px;
+margin-bottom:10px;
+}
+
+h1,h3{
+margin-left:auto;margin:auto; text-align:center;
+}
+#heading{
+margin-left:auto;margin-right:auto;text-align:center;background-color:#0000FF;font-weight:bold;color:#FFFFFF;border-radius:5px;width:280px;font-size:large;padding:3px;
+}
+#footer{
+clear:both;
+height:40px;
+background: #0A2B3E;
+position:absolute;
+bottom:0px;
+left:0px;
+width:100%;
+}
+
+</style>
+</head>
+<body>
+<div id="page">
+<div id="content_left">
+    <input type="hidden" id="h1" value="160">
+   <canvas id="Canvas_One" width="400" height="300" style="margin-bottom:10px;border:solid lightblue 5px;border-radius:5px;">
+   </canvas>
+<input type="button" style="float:left;margin-left:10px;" value="Run" onclick="anim()" id="Animation"><input type="button" style="float:right;margin-right:10px;" value="Stop" onclick="stop(x)" id="Stopping">
+</div>
+<div id="content_right">
+ <p>Make sure you stop the animation before <br> choosing the speed to see a smooth effect.</p>
+<form name="pendulum" action="">
+     <input id="R1" name="speed" value="Slow" type="radio" checked="true">Slow<br><br>
+     <input id="R2" name="speed" value="Medium" type="radio">Medium<br><br>
+     <input id="R3" name="speed" value="Fast" type="radio">Fast<br><br>
+ </form>
+<script type="text/javascript">
+        var canvas = document.getElementById('Canvas_One');
+        var context = canvas.getContext('2d');
+        var i;
+        var x;
+        var sp;
+        //code for static string - grey colour
+        context.beginPath();
+        context.moveTo(200, 0);
+        context.lineTo(200, 135);
+        context.lineWidth = 5;
+        context.strokeStyle = "grey";
+        context.stroke();
+        // code for the static ball - gradient blue 
+        context.beginPath();
+        context.arc(200, 150, 20, 0, 2 * Math.PI, false);
+        var grd = context.createRadialGradient(200, 150, 2, 200, 150, 18);
+        // light blue
+        grd.addColorStop(0, '#8ED6FF');
+        // dark blue
+        grd.addColorStop(1, '#0000ff');
+        context.fillStyle = grd;
+        context.fill();
+        // function for the animation
+        function circ() {
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            i = eval(document.getElementById('h1').value) + 10;
+            context.beginPath();
+            context.moveTo(200, 0);
+            context.lineTo(200 + 40 * Math.sin(i * Math.PI / 180), 135);
+            context.lineWidth = 2;
+            context.strokeStyle = "grey";
+            context.stroke();
+            context.beginPath();
+            context.arc(200 + 40 * Math.sin(i * Math.PI / 180), 150, 20, 0, 2 * Math.PI, false);
+            if (i == 360 || i > 360) { i = 0; }
+            //alert(i);
+            //alert(i);
+            document.getElementById('h1').value = i;
+            //create radial gradient
+            var grd = context.createRadialGradient(200 + 40 * Math.sin(i * Math.PI / 180), 150, 2, 200 + 40 * Math.sin(i * Math.PI / 180), 150, 18);
+            // light blue
+            grd.addColorStop(0, '#8ED6FF');
+            // dark blue
+            grd.addColorStop(1, '#0000ff');
+            context.fillStyle = grd;
+            context.fill();
+        }
+        // function for timing
+        function anim() {
+            if
+            (document.getElementById('R1').checked)
+            { sp = 200; }
+            else if (document.getElementById('R2').checked) { sp = 100; }
+            else if (document.getElementById('R3').checked) { sp = 80; }
+            else
+            { sp = 200; }
+            x = window.setInterval('circ()', sp);
+        }
+        function stop() {
+        //empty the hidden element on exit
+            document.getElementById('h1').value = 0;
+            window.clearInterval(x);
+        }
+      </script>
+
+</div>
+</div>
+<div id="footer">
+</div>
+
+</body></html>

@@ -1,3 +1,129 @@
+library(ggplot2)
+ggplot(data, aes(x=thickness, y=count, colour=supp)) + #
+    geom_errorbar(aes(ymin= count-se, ymax= count+se), width=.1) +#
+    geom_line() +#
+    geom_point()
+summarySE <- function(data=NULL, measurevar, groupvars=NULL, na.rm=FALSE,#
+                      conf.interval=.95, .drop=TRUE) {#
+    require(plyr)#
+#
+    # New version of length which can handle NA's: if na.rm==T, don't count them#
+    length2 <- function (x, na.rm=FALSE) {#
+        if (na.rm) sum(!is.na(x))#
+        else       length(x)#
+    }#
+#
+    # This does the summary. For each group's data frame, return a vector with#
+    # N, mean, and sd#
+    datac <- ddply(data, groupvars, .drop=.drop,#
+      .fun = function(xx, col) {#
+        c(N    = length2(xx[[col]], na.rm=na.rm),#
+          mean = mean   (xx[[col]], na.rm=na.rm),#
+          sd   = sd     (xx[[col]], na.rm=na.rm)#
+        )#
+      },#
+      measurevar#
+    )#
+#
+    # Rename the "mean" column    #
+    datac <- rename(datac, c("mean" = measurevar))#
+#
+    datac$se <- datac$sd / sqrt(datac$N)  # Calculate standard error of the mean#
+#
+    # Confidence interval multiplier for standard error#
+    # Calculate t-statistic for confidence interval: #
+    # e.g., if conf.interval is .95, use .975 (above/below), and use df=N-1#
+    ciMult <- qt(conf.interval/2 + .5, datac$N-1)#
+    datac$ci <- datac$se * ciMult#
+#
+    return(datac)#
+}
+dfc <- summarySE(df, measurevar="count", groupvars=c("thickness"))
+install.packages('plyr', dep = TRUE)
+dfc <- summarySE(df, measurevar="count", groupvars=c("thickness"))
+dfc <- summarySE(data, measurevar="count", groupvars=c("thickness"))
+dfc <- summarySE(data, measurevar="count")
+ggplot(dfc, aes(x=thickness, y=count)) + #
+    geom_errorbar(aes(ymin=len-se, ymax=len+se), width=.1) +#
+    geom_line() +#
+    geom_point()
+ggplot(dfc, aes(x=thickness, y=count)) + #
+    geom_errorbar(aes(ymin=count-se, ymax=count+se), width=.1) +#
+    geom_line() +#
+    geom_point()
+dfc <- summarySE(data, measurevar="count", groupvars=c("thickness"))
+ggplot(data,aes(thickness,count))+stat_summary(fun.data=mean_cl_normal)
+data <- read.table("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/ExpI1_01.txt", header = TRUE, sep = ",")
+data
+attach(data)
+count
+thickness
+ggplot(data=data,aes(x=thickness,y=count,colour=Code,linetype=Group,ymin=Mean-SE,ymax=Mean+SE)) #
+	+ geom_line() #
+	+ scale_x_continuous(breaks=c(1,2))#
+	+ scale_linetype_manual(values=c(2,1))#
+	+ geom_point()#
+	+ geom_errorbar(width=.1,position='dodge')
+ggplot(data=data,aes(x=thickness,y=count,linetype=Group,ymin=Mean-SE,ymax=Mean+SE)) #
+	+ geom_line() #
+	+ scale_x_continuous(breaks=c(1,2))#
+	+ scale_linetype_manual(values=c(2,1))#
+	+ geom_point()#
+	+ geom_errorbar(width=.1,position='dodge')
+ggplot(data=data,aes(x=thickness,y=count,ymin=Mean-SE,ymax=Mean+SE)) #
+	+ geom_line() #
+	+ scale_x_continuous(breaks=c(1,2))#
+	+ scale_linetype_manual(values=c(2,1))#
+	+ geom_point()#
+	+ geom_errorbar(width=.1,position='dodge')
+ggplot(data=data,aes(x=thickness,y=count,colour=variable,group=variable,ymin=Mean-SE,ymax=Mean+SE)) #
+	+ geom_line() #
+	+ scale_x_continuous(breaks=c(1,2))#
+	+ scale_linetype_manual(values=c(2,1))#
+	+ geom_point()#
+	+ geom_errorbar(width=.1,position='dodge')
+ggplot(large)#
+	+geom_point(aes(x=thickness,y=count))#
+		+scale_y_log10()#
+			+ggtitle("First example")
+ggplot(small)#
+	+geom_point(aes(x=thickness,y=count))#
+		+scale_y_log10()#
+			+ggtitle("First example")
+ggplot()#
+	+geom_point(aes(x=thickness,y=count))#
+		+scale_y_log10()#
+			+ggtitle("First example")
+ggplot(data)#
+	+geom_point(aes(x=thickness,y=count))#
+		+scale_y_log10()#
+			+ggtitle("First example")
+set.seed(42)#
+small<-diamonds[sample(nrow(diamonds),1000),]
+small
+head(small)
+ggplot(small)#
+	+geom_point(aes(x=thickness,y=count))#
+		+scale_y_log10()#
+			+ggtitle("First example")
+ggplot(small)#
+	+geom_point(aes(x=carat,y=price,colour=cut))#
+		+scale_y_log10()#
+			+ggtitle("First example")
+ggplot(small)#
+	+geom_point(aes(x=carat,y=price,colour=cut))#
+		+scale_y_log10()#
+			+facet_wrap(~cut)#
+				+ggtitle("First example")
+ggplot(small)
+head(small)
+attach(small)
+ggplot(small)
+ggplot(small)#
+	+geom_point(aes(x=carat,y=price,colour=cut))
+d <- ggplot(small, aes(x=carat,y=price,colour=cut))
+d <- d + scale_y_log10() + facet_wrap(~cut) + ggtitle("First example")
+d
 data <- read.table("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/ExpI1_01.txt", header = TRUE, sep = ",")
 attach(data)
 ds <- read.table("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/ExpI1_01.txt", header = TRUE, sep = ",")
@@ -246,50 +372,11 @@ d
 source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Radiation Attenuation Dataset.R")
 source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Electrical Cunductivity of Semiconductor.R")
 data
-source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Electrical Cunductivity of Semiconductor.R")
-source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Electrical Cunductivity of Semiconductor.R")
-source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Electrical Cunductivity of Semiconductor.R")
 source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Radiation Attenuation Dataset.R")
-source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Radiation Attenuation Dataset.R")
-source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Radiation Attenuation Dataset.R")
-source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Radiation Attenuation Dataset.R")
-source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Radiation Attenuation Dataset.R")
-source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Radiation Attenuation Dataset.R")
-source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Radiation Attenuation Dataset.R")
-source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Radiation Attenuation Dataset.R")
-source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Radiation Attenuation Dataset.R")
-source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Radiation Attenuation Dataset.R")
-source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Radiation Attenuation Dataset.R")
-source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Radiation Attenuation Dataset.R")
-source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Magnetization of a Ferromagnet.R")
-source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Magnetization of a Ferromagnet.R")
-source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Magnetization of a Ferromagnet.R")
-source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Suceptibility of a Ferromagnet.R")
-source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Suceptibility of a Ferromagnet.R")
-source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Electrical Cunductivity of Semiconductor.R")
-source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Magnetization of a Ferromagnet.R")
-source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Suceptibility of a Ferromagnet.R")
-fit
-fit$model
-source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Suceptibility of a Ferromagnet.R")
-source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Suceptibility of a Ferromagnet.R")
+source("/Users/jason/Documents/projects/ODU/PHYS413/1 - Data Analysis Examples/Radiation Attenuation Dataset.R")
+source("/Users/jason/Documents/projects/ODU/PHYS413/1 - Data Analysis Examples/Radiation Attenuation Dataset.R")
 summary(fit)
-fit
-source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Specific Heat of a Solid.R")
-source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Specific Heat of a Solid.R")
-source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Specific Heat of a Solid.R")
-data
-source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Specific Heat of a Solid.R")
-source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Specific Heat of a Solid.R")
-source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Specific Heat of a Metal.R")
-source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Specific Heat of a Metal.R")
-source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Specific Heat of a Metal.R")
-source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Specific Heat of a Metal.R")
-source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Specific Heat of a Metal.R")
-source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Specific Heat of a Metal.R")
-source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Specific Heat of a Solid.R")
-source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Specific Heat of a Solid.R")
-source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Specific Heat of a Solid.R")
-source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Specific Heat of a Solid.R")
-source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Specific Heat of a Solid.R")
-source("/Users/jason/Documents/projects/ODU/PHYS413/LAB-A/Specific Heat of a Solid.R")
+summary(fit)
+source("/Users/jason/Documents/projects/ODU/PHYS413/1 - Data Analysis Examples/Radiation Attenuation Dataset.R")
+source("/Users/jason/Documents/projects/ODU/PHYS413/1 - Data Analysis Examples/Radiation Attenuation Dataset.R")
+summary(fit)
